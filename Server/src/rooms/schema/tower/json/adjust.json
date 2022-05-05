@@ -1,0 +1,67 @@
+[
+   
+    {
+      "id": "baron",
+      "name": "男爵",
+      "edition": "tb",
+      "team": "minion",
+      "townsfolk":-2,
+      "outsider":2,
+      "minion":0,
+      "ability": "There are extra outsider in play. [+2 outsider]"
+    },
+    {
+      "id": "godfather",
+      "name": "Godfather",
+      "edition": "bmr",
+      "team": "minion",
+      "townsfolk":-1,
+      "outsider":1,
+      "minion":0,
+      "ability": "You start knowing which outsider are in play. If 1 died today, choose a player tonight: they die. [\u22121 or +1 Outsider]"
+    },
+    
+    {
+      "id": "fanggu",
+      "name": "Fang Gu",
+      "edition": "snv",
+      "team": "demon",
+      "townsfolk":-1,
+      "outsider":1,
+      "minion":0,
+      "ability": "Each night*, choose a player: they die. The 1st Outsider this kills becomes an evil Fang Gu & you die instead. [+1 Outsider]"
+    },
+    {
+      "id": "vigormortis",
+      "name": "Vigormortis",
+      "edition": "snv",
+      "team": "demon",
+      "townsfolk":0,
+      "outsider":0,
+      "minion":0,
+      "ability": "Each night*, choose a player: they die. minions you kill keep their ability & poison 1 Townsfolk neighbour. [\u22121 Outsider]"
+    },
+   
+    {
+      "id": "balloonist",
+      "name": "Balloonist",
+      "edition": "",
+      "team": "townsfolk",
+      "townsfolk":-1,
+      "outsider":1,
+      "minion":0,
+      "ability": "Each night, you learn 1 player of each character type, until there are no more types to learn. [+1 Outsider]"
+    },
+    {
+      "id": "lilmonsta",
+      "name": "Lil' Monsta",
+      "edition": "",
+      "team": "demon",
+      "townsfolk":0,
+      "outsider":0,
+      "minion":1,
+      "ability": "Each night, minions choose who babysits Lil' Monsta's token & \"is the Demon\". A player dies each night*. [+1 minion]"
+    }
+  ]
+  
+  

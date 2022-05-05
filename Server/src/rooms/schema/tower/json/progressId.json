@@ -1,0 +1,69 @@
+[
+    {"id":"10","name":"进入房间"    ,"timeout":1,"func":"enterRoom"},
+    {"id":"11","name":"系统重置"    ,"timeout":0,"func":"resetAll"},
+    {"id":"12","name":"创建座位"    ,"timeout":0,"func":"doCreateSeats"},
+    {"id":"13","name":"创建机器人"    ,"timeout":1,"func":"doCreateRobot"},
+   
+    {"id":"15","name":"等待玩家入座"    ,"timeout":50,"func":"checkIfStart","tip":"玩家可随意更换座位"},
+    {"id":"16","name":"锁定房间"    ,"timeout":1,"func":"lockRoom"},
+    {"id":"20","name":"锁定座位"    ,"timeout":0,"func":"doAutoTakeSeat"},
+    {"id":"21","name":"等待说书人启动游戏"    ,"timeout":1,"func":"waitAdminStart"},
+    {"id":"22","name":"游戏启动中"    ,"timeout":0,"func":"doAutoSeatReady"},
+  
+    {"id":"23","name":"派发预选角色"    ,"timeout":0,"func":"sendPreviewRole"},    
+    {"id":"24","name":"锁定房间"    ,"timeout":1,"func":"doAutoLockRoom"},        
+    {"id":"25","name":"人物选单"    ,"timeout":5,"func":"doAutoSelectRole","tip":"玩家可在六张身份牌中选一个,50%机率成功"},
+    {"id":"26","name":"建立魔法书"    ,"timeout":0,"func":"setMagicBook"},
+    {"id":"27","name":"建立技能系统"    ,"timeout":0,"func":"setRoleSkill"},
+    {"id":"28","name":"系统准备"    ,"timeout":0,"func":"cleanTrash"},
+    {"id":"29","name":"人物派发"    ,"timeout":0,"func":"sendRole"},
+   
+    {"id":"30","name":"设定日期"    ,"timeout":0,"func":"setupDayAndNight"},
+    {"id":"31","name":"阵营讯息分享"    ,"timeout":0,"func":"shareInfo"},
+
+    {"id":"40","name":"游戏开始"    ,"timeout":3,"func":"gameStart"},
+    {"id":"41","name":"下一回合"      ,"timeout":0,"func":"nextRound"},
+
+    {"id":"50","name":"等待夜晚行动"      ,"timeout":0,"func":"waitNightAction","tip":"在时间内选择好您的技能发动对象"},
+    {"id":"51","name":"自动执行夜晚行动"      ,"timeout":0,"func":"autoNightAction"},
+    {"id":"52","name":"等待夜晚行动"      ,"timeout":0,"func":""},
+    {"id":"53","name":"是否有额外行动"      ,"timeout":0,"func":""},
+    {"id":"54","name":"等待玩家回应"      ,"timeout":0,"func":"runAutoNightNewAction"},
+
+    {"id":"60","name":"白天行动"      ,"timeout":0,"func":"waitDayAction"},
+    {"id":"61","name":"白天公聊结束"      ,"timeout":0,"func":"dayPublicChatOver"},
+    {"id":"62","name":"黄昏提名"      ,"timeout":0,"func":"waitDuskAction"},
+    {"id":"63","name":"等待投票"      ,"timeout":0,"func":"waitVoteAction"},
+
+    {"id":"64","name":"计票"      ,"timeout":0,"func":"countVote"},
+    {"id":"67","name":"处决"      ,"timeout":0,"func":"execute"},
+    {"id":"68","name":"每日投票存档"      ,"timeout":0,"func":"closeVote"},
+    {"id":"69","name":"是否产生新恶魔"      ,"timeout":0,"func":"makeNewBoss"},
+
+  
+
+
+    {"id":"70","name":"下个玩家"    ,"buff":true,"timeout":1,"func":"nextTurn"},
+    {"id":"80","name":"等待玩家行动","buff":false,"timeout":5,"func":"doAutoPlayerAction"},
+    {"id":"81","name":"已抽牌","timeout":1,"func":"dealed"},
+    {"id":"82","name":"已出牌","buff":false,"timeout":1,"func":"dealed"},
+    {"id":"83","name":"被扣","timeout":1,"func":"cuffed"},
+    {"id":"800","name":"黑夜了   "  ,"timeout":1,"func":"nightComing"},
+    {"id":"801","name":"女巫剌杀"   ,"timeout":1,"func":"doAutotWitchAction"},          
+    {"id":"802","name":"警长保护"   ,"timeout":1,"func":"doAutoSergantAction"},          
+    {"id":"803","name":"玩家自首"   ,"buff":false,"timeout":1,"func":"doAutoSurrenderAction"},
+    {"id":"804","name":"自首结算" ,"timeout":1,"func":"checkSurrenderSucess"},
+    {"id":"805","name":"警长保护了" ,"timeout":1,"func":""},
+    {"id":"806","name":"没有警长"   ,"timeout":1,"func":""},
+    {"id":"807","name":"没有黑猫"   ,"timeout":1,"func":""},          
+    {"id":"808","name":"结算死亡"    ,"timeout":1,"func":"checkMurderScuess"},
+    {"id":"809","name":"因为自首保命了","timeout":1,"func":""},
+    {"id":"900","name":"抽到传染"    ,"timeout":1,"func":""},
+    {"id":"901","name":"开身份牌"    ,"timeout":1,"func":"doAutoKillerAction"},
+    {"id":"902","name":"玩家进行传染","timeout":1,"func":"doAutotInfectAction"},
+    {"id":"903","name":"传染结算","timeout":3,"func":"checkInfectSucess"},
+    {"id":"999","name":"结算是否结束","timeout":0,"func":""},
+    {"id":"910","name":"游戏结束"   ,"timeout":1,"func":"doAutoGameOverAction"},
+    {"id":"911","name":"公布结果"   ,"timeout":1,"func":"doAutoReportScore"},
+    {"id":"912","name":"重新开始"   ,"timeout":1,"func":"doAutoRestart"}
+]
