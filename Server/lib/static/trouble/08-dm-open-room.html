@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+
+    <style>
+      body { font-family: Tahoma, Geneva, sans-serif; }
+    </style>
+
+    <!-- colyseus.js client -->
+    <!--
+    <script type="text/javascript" src="https://unpkg.com/colyseus.js@^0.14.0/dist/colyseus.js"></script>
+  -->
+  <script type="text/javascript" src="../js/colyseus.js"></script>
+
+  </head>
+  <body>
+    <h1>
+      <a href="http://localhost:2567/"><img src="https://cdn.jsdelivr.net/gh/colyseus/colyseus@master/media/header.png" height="100" alt="colyseus" /></a>
+    </h1>
+   
+    <p>This room doesn't use the room's state. It just broadcast messages through "broadcast" method.</p>
+    <button onclick="CreateRoom()">CreateRoom</button>
+    <button onclick="resetAll()">resetAll</button>
+    <p>
+      <button onclick="slayerTest()">slayerTest</button>
+      <button onclick="saintTest()">saintTest</button>
+      <button onclick="virginTest()">virginTest</button>
+      <p>
+    <strong>Messages</strong><br>
+
+    <form id="form">
+      <input type="text" id="input" value="" autofocus/>
+      <input type="submit" value="send" />
+    </form>
+
+    <div id="messages"></div>
+
+    <script>
+        //CheckAlreadyCreateRoomByThisPlayer();
+        
+        var _room ;
+        CreateRoom();
+      
+        function resetRoom(){
+          
+        if (_room){
+          //room.send("message", msg);
+          _room.send("reset");
+        }
+         
+         }
+        
+        function CreateRoom(){
+          var host = window.document.location.host.replace(/:.*/, '');
+          var client = new Colyseus.Client(location.protocol.replace("http", "ws") + "//" + host + (location.port ? ':'+location.port : ''));
+          console.log("client",client)
+          client.create("trouble", {
+          username: "Jake",
+          password:"123",
+          room_password:"54188",
+          robots:11,
+          roomId:9999,
+          eid:'tb',
+          master:true       
+          }).then(room => {
+              console.log("joined",room.id);
+              _room = room;
+        
+          room.onStateChange.once(function(state) {
+              console.log("initial room state:", state);
+          });
+
+          // new room state
+          room.onStateChange(function(state) {
+           // console.log(state)
+              // this signal is triggered on each patch
+          });
+
+          // listen to patches coming from the server
+          room.onMessage("messages", function(message) {
+              var p = document.createElement("p");
+              p.innerText = message;
+              document.querySelector("#messages").appendChild(p);
+          });
+
+          // send message to room on submit
+          document.querySelector("#form").onsubmit = function(e) {
+              e.preventDefault();
+
+              var input = document.querySelector("#input");
+
+              console.log("input:", input.value);
+
+              // send data to room
+              room.send("message", input.value);
+
+              // clear input
+              input.value = "";
+          }
+
+
+        });
+
+
+
+      }
+
+        function resetAll(){
+          
+          if (_room){          
+            _room.send("action",{'action':'resetAll'});
+            console.log("resetAll")
+          }           
+        }
+
+        function slayerTest(){
+          if (_room){          
+            _room.send("action",{'action':'slayerTest'});
+            console.log("slayerTest")
+          }   
+
+        }
+        function saintTest(){
+          if (_room){          
+            _room.send("action",{'action':'saintTest'});
+            console.log("saintTest")
+          }   
+
+        }
+        function virginTest(){
+          if (_room){          
+            _room.send("action",{'action':'virginTest'});
+            console.log("virginTest")
+          }   
+
+        }
+
+    </script>
+  </body>
+</html>
