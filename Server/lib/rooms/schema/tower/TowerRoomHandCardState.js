@@ -8,10 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HandCardDeck = exports.HandCard = void 0;
 const schema_1 = require("@colyseus/schema");
-const roles = require('./json/roles.json');
+//const roles = require('./json/roles.json');
+const roles_json_1 = __importDefault(require("./json/roles.json"));
 //import { Result } from "./TowerRoomState";
 class HandCard extends schema_1.Schema {
     constructor() {
@@ -56,9 +60,9 @@ class HandCardDeck extends schema_1.Schema {
     init(options) {
         console.log("init");
         var editorId = options.id;
-        for (var i = 0; i < roles.length; i++) {
+        for (var i = 0; i < roles_json_1.default.length; i++) {
             var str = String(i);
-            var role = roles[i];
+            var role = roles_json_1.default[i];
             if (role.edition == editorId) {
                 if (role.buffPeriod) {
                     var card = new HandCard().assign(role);

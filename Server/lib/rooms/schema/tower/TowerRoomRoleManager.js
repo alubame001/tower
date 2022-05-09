@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RoleManager = void 0;
 //import {Client} from "colyseus";
@@ -17,9 +20,7 @@ const TroubleRole_1 = require("./TroubleRole");
 //import { Action} from "./TowerRoomMagicBook";
 const TowerRoomHandCardState_1 = require("./TowerRoomHandCardState");
 const TowerRoomWishRole_1 = require("./TowerRoomWishRole");
-const editions = require('./json/editions.json');
-const roles = require('./json/roles.json');
-const game = require('./json/game.json');
+const roles_json_1 = __importDefault(require("./json/roles.json"));
 class RoleManager extends schema_1.Schema {
     constructor() {
         super(...arguments);
@@ -35,9 +36,9 @@ class RoleManager extends schema_1.Schema {
     }
     init(options) {
         var editorId = options.id;
-        for (var i = 0; i < roles.length; i++) {
+        for (var i = 0; i < roles_json_1.default.length; i++) {
             var str = String(i);
-            var role = roles[i];
+            var role = roles_json_1.default[i];
             if (role.edition == editorId) {
                 var roleCard = new TroubleRole_1.RoleCard().assign(role);
                 roleCard.abilityId = roleCard.id;

@@ -13,9 +13,6 @@ exports.Role = void 0;
 const schema_1 = require("@colyseus/schema");
 //import { Action} from "./TowerRoomMagicBook";
 const TowerRoomHandCardState_1 = require("./TowerRoomHandCardState");
-//const editions = require('./json/editions.json');
-//const roles = require('./json/roles.json');
-//const game = require('./json/game.json');
 class Role extends schema_1.Schema {
     constructor() {
         super(...arguments);

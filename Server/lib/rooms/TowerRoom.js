@@ -40,7 +40,7 @@ class TowerRoom extends colyseus_1.Room {
         this.autoDispose = false;
     }
     onCreate(options) {
-        console.log("onCreate options", options);
+        console.log("onCreate options", options.roomId);
         // @ts-ignore
         let res = editions.filter((item, index, array) => {
             return (item.id == options.eid);

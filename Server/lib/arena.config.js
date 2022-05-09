@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
 const arena_1 = __importDefault(require("@colyseus/arena"));
 const monitor_1 = require("@colyseus/monitor");
 const core_1 = require("@mikro-orm/core");
@@ -29,12 +30,12 @@ const database_config_1 = require("./config/database.config");
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const characterRoutes_1 = __importDefault(require("./routes/characterRoutes"));
 const path_1 = __importDefault(require("path"));
-//import serveIndex from 'serve-index';
+const serve_index_1 = __importDefault(require("serve-index"));
 /**
  * Import your Room files
  */
 const TowerRoom_1 = require("./rooms/TowerRoom");
-const CardGame_1 = require("./rooms/CardGame");
+//import { CardGameRoom } from "./rooms/CardGame";
 exports.default = arena_1.default({
     getId: () => "Tower Online App",
     initializeGameServer: (gameServer) => {
@@ -42,8 +43,10 @@ exports.default = arena_1.default({
             .define("lobby", colyseus_1.LobbyRoom);
         gameServer.define("tower", TowerRoom_1.TowerRoom)
             .enableRealtimeListing();
-        gameServer.define("cardgame", CardGame_1.CardGameRoom)
-            .enableRealtimeListing();
+        /*
+        gameServer.define("cardgame", CardGameRoom)
+        .enableRealtimeListing();
+*/
         for (var i = 1; i <= 10; i++) {
             var options = {
                 username: "Jake",
@@ -82,9 +85,9 @@ exports.default = arena_1.default({
         app.get("/test", (req, res) => {
             res.send("It's time to kick ass and chew bubblegum!");
         });
-        //      app.use('/', serveIndex(path.join(__dirname, "static"), {'icons': true}))
+        app.use('/', serve_index_1.default(path_1.default.join(__dirname, "static"), { 'icons': true }));
         app.use('/', express_1.default.static(path_1.default.join(__dirname, "static")));
-        //        app.use('/game', serveIndex(path.join(__dirname, "public"), {'icons': true}))
+        app.use('/game', serve_index_1.default(path_1.default.join(__dirname, "public"), { 'icons': true }));
         app.use('/game', express_1.default.static(path_1.default.join(__dirname, "public")));
         /**
          * Bind @colyseus/monitor

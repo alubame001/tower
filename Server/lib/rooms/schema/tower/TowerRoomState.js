@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TowerRoomState = exports.Progress = exports.Options = void 0;
 const schema_1 = require("@colyseus/schema");
@@ -16,10 +19,11 @@ const TroubleRole_1 = require("./TroubleRole");
 const TowerRoomHandCardState_1 = require("./TowerRoomHandCardState");
 const TowerRoomPlayerState_1 = require("./TowerRoomPlayerState");
 const TowerRoomMagicBook_1 = require("./TowerRoomMagicBook");
-const roles = require('./json/roles.json');
-const editions = require('./json/editions.json');
-const progressIds = require('./json/progressId.json');
-const game = require('./json/game.json');
+//const roles = require('./json/roles.json');
+//const editions = require('./json/editions.json');
+//const progressIds = require('./json/progressId.json');
+//const game = require('./json/game.json');
+const progressId_json_1 = __importDefault(require("./json/progressId.json"));
 //import { Vector3 } from "../../helpers/Vectors";
 class Options extends schema_1.Schema {
     constructor() {
@@ -152,7 +156,7 @@ class TowerRoomState extends schema_1.Schema {
     //@type(SeatManager) seatManager: SeatManager = new SeatManager();
     init(options) {
         console.log("options", this.options.roomId);
-        var data = progressIds;
+        var data = progressId_json_1.default;
         var pids = this.pids;
         for (var i = 0; i < data.length; i++) {
             var p = new Progress().assign(data[i]);
