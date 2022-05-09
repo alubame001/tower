@@ -15,9 +15,7 @@ import {RoleManager} from "./TowerRoomRoleManager";
 import options from "../../../config/mikro-orm.config";
 import { realpath } from "fs";
 import { createDecipheriv } from "crypto";
-//const editions = require('./json/editions.json');
-//const roles = require('./json/roles.json');
-//const game = require('./json/game.json');
+
 
 
 

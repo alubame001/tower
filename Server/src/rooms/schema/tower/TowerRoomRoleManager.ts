@@ -15,10 +15,13 @@ import {WishRole } from "./TowerRoomWishRole";
 import options from "../../../config/mikro-orm.config";
 import { realpath } from "fs";
 import { createDecipheriv } from "crypto";
-const editions = require('./json/editions.json');
-const roles = require('./json/roles.json');
-const game = require('./json/game.json');
+//const editions = require('./json/editions.json');
+//const roles = require('./json/roles.json');
+//const game = require('./json/game.json');
 
+import editions from "./json/editions.json"
+import roles from "./json/roles.json"
+import game from "./json/game.json"
 
 
 

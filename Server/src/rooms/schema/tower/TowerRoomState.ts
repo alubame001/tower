@@ -10,11 +10,12 @@ import { MessageManager} from "./MessageManager";
 import { Seat,SeatManager} from "../SeatState";
 
 
-const roles = require('./json/roles.json');
-const editions = require('./json/editions.json');
-const progressIds = require('./json/progressId.json');
-const game = require('./json/game.json');
-
+import roles from "./json/roles.json"
+//const roles = require('./json/roles.json');
+//const editions = require('./json/editions.json');
+//const progressIds = require('./json/progressId.json');
+//const game = require('./json/game.json');
+import progressIds from "./json/progressId.json"
 
 //import { Vector3 } from "../../helpers/Vectors";
 

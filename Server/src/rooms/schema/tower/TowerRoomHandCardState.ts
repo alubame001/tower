@@ -1,6 +1,8 @@
 
 import { Schema, type, MapSchema, ArraySchema } from "@colyseus/schema";
-const roles = require('./json/roles.json');
+//const roles = require('./json/roles.json');
+
+import roles from "./json/roles.json"
 //import { Result } from "./TowerRoomState";
 
 export class HandCard extends Schema {
