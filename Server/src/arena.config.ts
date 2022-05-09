@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import Arena from "@colyseus/arena";
 import { monitor } from "@colyseus/monitor";
 import { MikroORM } from "@mikro-orm/core";
@@ -19,13 +19,13 @@ import userRoutes from "./routes/userRoutes";
 import characterRoutes from "./routes/characterRoutes";
 
 import path from 'path';
-//import serveIndex from 'serve-index';
+import serveIndex from 'serve-index';
 /**
  * Import your Room files
  */
 
 import { TowerRoom } from "./rooms/TowerRoom";
-import { CardGameRoom } from "./rooms/CardGame";
+//import { CardGameRoom } from "./rooms/CardGame";
 
 export default Arena({
     getId: () => "Tower Online App",
@@ -37,9 +37,10 @@ export default Arena({
 
        gameServer.define("tower", TowerRoom)
         .enableRealtimeListing();
+        /*
         gameServer.define("cardgame", CardGameRoom)
         .enableRealtimeListing();
-
+*/
 
 
 
@@ -93,10 +94,10 @@ export default Arena({
             res.send("It's time to kick ass and chew bubblegum!");
         });
 
-  //      app.use('/', serveIndex(path.join(__dirname, "static"), {'icons': true}))
+        app.use('/', serveIndex(path.join(__dirname, "static"), {'icons': true}))
         
         app.use('/', express.static(path.join(__dirname, "static")));
-//        app.use('/game', serveIndex(path.join(__dirname, "public"), {'icons': true}))
+        app.use('/game', serveIndex(path.join(__dirname, "public"), {'icons': true}))
         app.use('/game', express.static(path.join(__dirname, "public")));
 
         /**

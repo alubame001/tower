@@ -47,7 +47,7 @@ export class TowerRoom extends Room<TowerRoomState> {
     lobbyTimeout :Delayed;
     onCreate (options: any) {
 
-      console.log("onCreate options",options)
+      console.log("onCreate options",options.roomId)
         // @ts-ignore
       let res=editions.filter((item,index,array)=>{            
         return (item.id  == options.eid)       
