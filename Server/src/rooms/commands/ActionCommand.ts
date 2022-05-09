@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Command } from "@colyseus/command";
 import { TowerRoomState } from "../schema/tower/TowerRoomState";
 import {Player } from "../schema/tower/TowerRoomPlayerState";
@@ -38,12 +39,12 @@ import {Spy} from "../schema/tower/roles/spy";
 import {Poisoner} from "../schema/tower/roles/poisoner";
 
 import {Imp} from "../schema/tower/roles/imp";
-import { ReconnectRoom } from "../TowerRoom";
- 
+//import { ReconnectRoom } from "../TowerRoom";
+  // @ts-ignore
 export class test extends Command<TowerRoomState, {
     robots:number
 }> {
- 
+  // @ts-ignore
   execute({robots}) {
       console.log("robots:",robots)
     for (var i=0;i<robots;i++){
@@ -53,77 +54,35 @@ export class test extends Command<TowerRoomState, {
           admin : false,
           robot : true
         });
-        this.state.players.set(player.id,player);      
+         // @ts-ignore
+        this.state.players.set(player.id,player);    
+         // @ts-ignore  
         this.state.players.get(player.id).connected = true;       
        
       }
   }
  
 }
-
+ // @ts-ignore
 export class Reset extends Command<TowerRoomState, {
     
 }> {
  
   execute({}) {
-
+    // @ts-ignore
     this.state.magicBook.roleManager.roles.forEach((role:RoleCard) => {
         role.lie = false;
         role.voteOnly = null;
     })
+     // @ts-ignore
     this.state.magicBook.voteOver = false;
+     // @ts-ignore
     this.state.magicBook.actinOver = false;
 
   }
  
 }
-/*
-
-export class SetNightOrder extends Command<TowerRoomState, {
-    
-}> {
- 
- async execute({}) {
-    let book =  this.state.magicBook;
-    book.roleManager.order.clear();
-    let arr = Array.from(book.roleManager.roles.values())      
-
-
-    if (book.round == 1) {
-
-      let res=arr.filter((item,index,array)=>{
-        return ((item.firstNight>0) &&(item.alive)&&(item.used))
-     })
-
-      for (var i =0;i<1000;i++){          
-        res.forEach(role => {
-          if (role.firstNight == i)
-          //  console.log(role.id+"("+role.name+")"+role.firstNight)
-                 book.roleManager.order.set(role.id,role);
-          
-        });          
-      }
-
-    }else {
-      let res=arr.filter((item,index,array)=>{
-        return ((item.otherNight>0) &&(item.alive)&&(item.used))
-     })
-
-     for (var i =0;i<1000;i++){      
-        res.forEach(role => {
-          if (role.otherNight == i)
-           // console.log(role.id,role.name,role.otherNight)
-           book.roleManager.order.set(role.id,role);
-            
-        });          
-      }
-    }
-
-  }
- 
-}
-*/
-
+ // @ts-ignore
 export class SetNightOrder extends Command<TowerRoomState, {
     
 }> {

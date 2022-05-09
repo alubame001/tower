@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Room } from "colyseus";
 
 import { Dispatcher,Command } from '@colyseus/command'

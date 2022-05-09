@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Command } from "@colyseus/command";
 import { TowerRoomState } from "../schema/tower/TowerRoomState";
  

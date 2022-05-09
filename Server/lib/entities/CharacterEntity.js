@@ -9,20 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TestEntity = void 0;
+exports.Character = void 0;
 const core_1 = require("@mikro-orm/core");
 const BaseEntity_1 = require("./BaseEntity");
-let TestEntity = class TestEntity extends BaseEntity_1.BaseEntity {
+/**
+ * Entity to represent the character in the database and throughout the server
+ */
+let Character = class Character extends BaseEntity_1.BaseEntity {
 };
 __decorate([
     core_1.Property(),
     __metadata("design:type", String)
-], TestEntity.prototype, "email", void 0);
+], Character.prototype, "name", void 0);
 __decorate([
     core_1.Property(),
     __metadata("design:type", String)
-], TestEntity.prototype, "username", void 0);
-TestEntity = __decorate([
+], Character.prototype, "brief", void 0);
+__decorate([
+    core_1.Property(),
+    __metadata("design:type", String)
+], Character.prototype, "age", void 0);
+__decorate([
+    core_1.Property(),
+    __metadata("design:type", String)
+], Character.prototype, "sexual", void 0);
+__decorate([
+    core_1.Property(),
+    __metadata("design:type", String)
+], Character.prototype, "father", void 0);
+__decorate([
+    core_1.Property(),
+    __metadata("design:type", String)
+], Character.prototype, "mother", void 0);
+Character = __decorate([
     core_1.Entity()
-], TestEntity);
-exports.TestEntity = TestEntity;
+], Character);
+exports.Character = Character;

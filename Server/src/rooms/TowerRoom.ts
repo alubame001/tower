@@ -48,7 +48,7 @@ export class TowerRoom extends Room<TowerRoomState> {
     onCreate (options: any) {
 
       console.log("onCreate options",options)
-       
+        // @ts-ignore
       let res=editions.filter((item,index,array)=>{            
         return (item.id  == options.eid)       
       }) 
@@ -57,6 +57,7 @@ export class TowerRoom extends Room<TowerRoomState> {
       var edition = res[0]
 
         this.msgInterval = this.clock.setInterval(() => {
+           // @ts-ignore
           this.dispatcher.dispatch(new SetMessageCount(), {});    
         }, 1000); 
 
@@ -222,6 +223,7 @@ export class TowerRoom extends Room<TowerRoomState> {
       this.runProgress(10,"");
     }
     playerJoin(client:Client){
+       // @ts-ignore
       this.dispatcher.dispatch(new PlayerJoin(), {client}); 
       if (this.firstUser){
         this.firstUser = false;
@@ -238,6 +240,7 @@ export class TowerRoom extends Room<TowerRoomState> {
       logger.info("onJoin: this.roomId  " +this.roomId)
 
       logger.info("onJoin:" +client.sessionId)
+       // @ts-ignore
       this.dispatcher.dispatch(new OnJoinCommand(), {       
         sessionId: client.sessionId,
         aid :client.auth.id
@@ -490,6 +493,7 @@ export class TowerRoom extends Room<TowerRoomState> {
       }
           //13
       doCreateRobot(){
+         // @ts-ignore
         this.dispatcher.dispatch(new DoCreateRobot(), {});        
          this.runProgress(15,"")
       }
@@ -514,6 +518,7 @@ export class TowerRoom extends Room<TowerRoomState> {
           return;
         }
         */
+        // @ts-ignore
         this.dispatcher.dispatch(new DoAutoTakeSeat(), { });
         this.state.magicBook.seatManager.lock = true;
         this.seatChanged();
@@ -554,6 +559,7 @@ export class TowerRoom extends Room<TowerRoomState> {
        let seatManager = book.seatManager;
        seatManager.sort();
        */
+       // @ts-ignore
        this.dispatcher.dispatch(new SortSeat(), { });
 
 
@@ -576,6 +582,7 @@ export class TowerRoom extends Room<TowerRoomState> {
       */
       this.state.playerCount =  this.state.magicBook.seatManager.seats.size;
       logger.silly(" this.state.playerCount:"+ this.state.playerCount)
+       // @ts-ignore
       this.dispatcher.dispatch(new DoAutoSeatReady(), { });
       
    
@@ -585,7 +592,7 @@ export class TowerRoom extends Room<TowerRoomState> {
     
      //23
      sendPreviewRole(){
-      
+       // @ts-ignore
       this.dispatcher.dispatch(new SendPreviewRole(), { });
 
 
@@ -620,6 +627,7 @@ export class TowerRoom extends Room<TowerRoomState> {
 
     //25
     doAutoSelectRole() {    
+       // @ts-ignore
       this.dispatcher.dispatch(new DoAutoSelectRole(), { });
     
 
@@ -630,17 +638,17 @@ export class TowerRoom extends Room<TowerRoomState> {
     setMagicBook(){
         let book = this.state.magicBook;
       
-       // var playerCount = this.state.magicBook.seatManager.seats.size;
-        //this.addWishRole();
-        this.dispatcher.dispatch(new AddWishRole(), { });
-        //this.state.setMagicBook(playerCount,true)
-        this.dispatcher.dispatch(new Init(), {});
-        this.dispatcher.dispatch(new WishSetup(), {});     
-        this.dispatcher.dispatch(new ReportAllWish(), {});     
+        // @ts-ignore
+        this.dispatcher.dispatch(new AddWishRole(), { }); // @ts-ignore
+
+        this.dispatcher.dispatch(new Init(), {}); // @ts-ignore
+        this.dispatcher.dispatch(new WishSetup(), {});      // @ts-ignore
+        this.dispatcher.dispatch(new ReportAllWish(), {});      // @ts-ignore
             
 
         book.reportAllPlace();
         var sessionId ="123";
+         // @ts-ignore
         this.dispatcher.dispatch(new InitMessageManager(), {sessionId});  
        // this.state.magicBook.initMessageManager();
         this.state.magicBook.addMessage(this.state.magicBook.report);
@@ -696,12 +704,14 @@ export class TowerRoom extends Room<TowerRoomState> {
       }
       //28 
       cleanTrash(){
+         // @ts-ignore
         this.dispatcher.dispatch(new CleanTrash(), { });
         this.runProgress(29,"")
       }
       //29
       sendRole(){
       //  this.setRolesSessionIdBySeat();
+       // @ts-ignore
         this.dispatcher.dispatch(new SetupRoleAndSeat(), { });
        
        this.runProgress(30,"");
@@ -715,7 +725,8 @@ export class TowerRoom extends Room<TowerRoomState> {
       
       //31
       shareInfo(){
-        this.dispatcher.dispatch(new ShareInfo(), { });
+         // @ts-ignore
+        this.dispatcher.dispatch(new ShareInfo(), { }); 
         this.runProgress(40,"");
       }
 
@@ -737,11 +748,13 @@ export class TowerRoom extends Room<TowerRoomState> {
       
       book.nextRound();
       book.reportDate();
-      book.setLuck();
-      this.dispatcher.dispatch(new ResetMagicBookEveryRound(), {});
-      this.dispatcher.dispatch(new ReleasePoision(), { });
-      this.dispatcher.dispatch(new ReleaseBuff(), { });
-      this.dispatcher.dispatch(new UpdateSeat(), { });
+      book.setLuck(); // @ts-ignore
+
+      this.dispatcher.dispatch(new ResetMagicBookEveryRound(), {}); // @ts-ignore
+      
+      this.dispatcher.dispatch(new ReleasePoision(), { }); // @ts-ignore
+      this.dispatcher.dispatch(new ReleaseBuff(), { }); // @ts-ignore
+      this.dispatcher.dispatch(new UpdateSeat(), { }); // @ts-ignore
     
       
       if (book.isDay()){   
@@ -820,10 +833,12 @@ export class TowerRoom extends Room<TowerRoomState> {
     
     async autoNightAction(){
 
-    
+     // @ts-ignore
       await  this.dispatcher.dispatch(new Reset(), {});
+       // @ts-ignore
       await  this.dispatcher.dispatch(new SetNightOrder(), {});
       await  this.dispatcher.dispatch(new AsyncSequenceSkill(), {});
+       // @ts-ignore
       await  this.dispatcher.dispatch(new CheckAllDemonBuff(), {});
   
      // this.nightDelay(1,"checkNewAction")  
@@ -1109,6 +1124,7 @@ export class TowerRoom extends Room<TowerRoomState> {
           this.onMessage(
           "playerAction",
             (client, message: { x: number; y: number; anim: string }) => {
+               // @ts-ignore
               this.dispatcher.dispatch(new PlayerUpdateCommand(), {
                 client,
                 x: message.x,
@@ -1132,7 +1148,7 @@ export class TowerRoom extends Room<TowerRoomState> {
       var action = message.action ;
       var player = this.state.players.get(client.auth.id);
       var seatId = message.seatId;
-
+/*
       switch (message.action) {          
               
         case 'slayerTest':
@@ -1153,6 +1169,7 @@ export class TowerRoom extends Room<TowerRoomState> {
             round :book.round                  
           });
           book.actionManager.actions.set(act.id,act)
+           
           role.autoUseSkill(book);
         break; 
           
@@ -1192,13 +1209,9 @@ export class TowerRoom extends Room<TowerRoomState> {
         case 'resume':
           this.resumeAllTimer();
           break;                     
-            /*                    
-        case 'changeSeat':
-            this.state.changeSeat(message.a,message.b);
-            break;
-            */                    
+                  
       }
-      
+      */
     
 
 
@@ -1320,7 +1333,7 @@ export class TowerRoom extends Room<TowerRoomState> {
                 var iconSeatId =message.data.iconSeatId;
                 var roleId =message.data.roleId;
                 var team = message.data.team
-
+                // @ts-ignore
                 this.dispatcher.dispatch(new SetIcon(), {seatId,iconSeatId,roleId,team});    
 
               }

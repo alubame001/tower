@@ -50,7 +50,7 @@ export class Slayer  extends RoleCard {
                     //book.addVictime(role.seatId,role.id,_this.id,"executed",book.round)
                     
                   // role.alive = false;
-                    role.claimDeath(book);
+                    role.claimDeath();
                     book.nominateManager.nominates.set(nominate.id,nominate);
                   
                     book.execute(nominate)
