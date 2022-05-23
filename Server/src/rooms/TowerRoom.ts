@@ -117,6 +117,9 @@ export class TowerRoom extends Room<TowerRoomState> {
       const userRepo = DI.em.fork().getRepository(User);
       // Check for a user with a pending sessionId that matches this client's sessionId
       let user: User = await userRepo.findOne({ username: options.username });
+      console.log("user",user)
+      console.log("options.password:",options.password)
+      console.log(" user.password:", user.password)
       let validPassword: boolean = await bcrypt.compare(options.password, user.password);
       if (!user || validPassword === false) {
         throw new ServerError(400,"Incorrect username or password");      
