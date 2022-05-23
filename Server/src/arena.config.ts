@@ -111,12 +111,11 @@ export default Arena({
         app.use('/', serveIndex(path.join(__dirname, "static"), {'icons': true}))        
         app.use('/', express.static(path.join(__dirname, "static")));
 
-        app.use('/game', serveIndex(path.join(__dirname, "public"), {'icons': true}))
+       // app.use('/game', serveIndex(path.join(__dirname, "public"), {'icons': true}))
         app.use('/game', express.static(path.join(__dirname, "public")));
 
         app.use('/admin', serveIndex(path.join(__dirname, "public/admin"), {'icons': true}))
         app.use('/admin', express.static(path.join(__dirname, "public/admin")));
-
         /**
          * Bind @colyseus/monitor
          * It is recommended to protect this route with a password.
