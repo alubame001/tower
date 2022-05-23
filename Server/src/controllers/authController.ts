@@ -79,9 +79,9 @@ export async function signUp(req: any, res: any) {
             });
 
             // Match make the user into a room
-            seatReservation = await matchmakerHelper.matchMakeToRoom("lobby_room", user.progress);
+           // seatReservation = await matchmakerHelper.matchMakeToRoom("lobby_room", user.progress);
 
-            updateUserForNewSession(user, seatReservation.sessionId);
+            //updateUserForNewSession(user, seatReservation.sessionId);
 
             // Save the new user to the database
             await userRepo.persistAndFlush(user);
@@ -99,7 +99,7 @@ export async function signUp(req: any, res: any) {
         res.status(200).json({
             error: false,
             output: {
-                seatReservation,
+               // seatReservation,
                 user: newUserObj
             }
         });
