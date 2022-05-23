@@ -85,7 +85,7 @@ export default Arena({
          */
         // Body parser - reads data from request body into json object
         app.use(express.json());
-        app.use(express.urlencoded({ extended: true, limit: "50kb" }));
+        app.use(express.urlencoded({ extended: true, limit: "5kb" }));
         app.use(cors());
         app.set('trust proxy', 1);
 

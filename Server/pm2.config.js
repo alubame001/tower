@@ -1,8 +1,8 @@
 module.exports = {
     apps: [
         {
-            name: 'My Application',
-            script: './dist/index.js',
+            name: 'My Tower Server',
+            script: './lib/index.js',
         },
     ],
 };
