@@ -85,6 +85,7 @@ export async function signUp(req: any, res: any) {
 
             // Save the new user to the database
             await userRepo.persistAndFlush(user);
+            console.log("signUp done:", user)
         }
         else {
             logger.error(`*** Sign Up Error - User with that username already exists!`);
